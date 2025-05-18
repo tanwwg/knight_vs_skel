@@ -41,8 +41,7 @@ public class Player : MonoBehaviour
         var vel = Vector2.Scale(speed, moveInput);
         body.linearVelocityX = vel.x;
         
-        var sign = Mathf.Sign(vel.x);
-        if (sign != 0) this.transform.localScale = new Vector3(sign, 1, 1);
+        if (vel.x != 0) this.transform.localScale = new Vector3(Mathf.Sign(vel.x), 1, 1);
 
         animState.SetState(Math.Abs(body.linearVelocityX) > 0.1f ? "run" : "idle");
     }
