@@ -14,4 +14,9 @@ public class AnimatorState : MonoBehaviour
             this.State = newState;
         }
     }
+
+    public void SetFlag(string flag)
+    {
+        animator.SetBool(flag, true);
+    }
 }

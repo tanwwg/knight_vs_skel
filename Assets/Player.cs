@@ -8,10 +8,11 @@ public class Player : MonoBehaviour
     
     private InputSystem_Actions _controls;
 
-    public float jumpForce;
     public Vector2 speed;
+
+    public Cooldown attack;
+    public PlayerJump jump;
     
-    public Animator animator;
     public AnimatorState animState;
     
     private void OnEnable()
@@ -22,20 +23,13 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (animState.State == "attack") return;
-
-        if (_controls.Player.Attack.IsPressed())
+        if (attack.isActivated) return;
+        if (_controls.Player.Attack.IsPressed() && !attack.isActivated)
         {
-            animState.SetState("attack");
-            return;
+            attack.Activate();
         }
-
-        if (_controls.Player.Jump.IsPressed())
-        {
-            body.AddForceY(jumpForce, ForceMode2D.Force);
-            animState.SetState("jump");
-            return;
-        }
+        
+        jump.HandleJump(_controls);
 
         var moveInput = _controls.Player.Move.ReadValue<Vector2>();
         var vel = Vector2.Scale(speed, moveInput);
@@ -43,6 +37,7 @@ public class Player : MonoBehaviour
         
         if (vel.x != 0) this.transform.localScale = new Vector3(Mathf.Sign(vel.x), 1, 1);
 
-        animState.SetState(Math.Abs(body.linearVelocityX) > 0.1f ? "run" : "idle");
+        animState.SetState(Math.Abs(body.linearVelocityX) > 0 ? "run" : "idle");
     }
+
 }
