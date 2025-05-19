@@ -140,7 +140,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: skeleton_warrior
+  m_Name: skel_archer
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: damage
@@ -221,7 +221,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7d6945ef4b8ab4a87bc0a0f7642ca739, type: 2}
+  m_Motion: {fileID: 7400000, guid: 97f57547ae8de47ee85eb58d922dae3e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -247,7 +247,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 761c8d5d9dd904fc0ad711ea54abc6bf, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2d0ec9214611946b7a876d23b744c87a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
