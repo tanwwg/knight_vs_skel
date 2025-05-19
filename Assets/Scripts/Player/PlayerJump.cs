@@ -5,6 +5,7 @@ public class PlayerJump : MonoBehaviour
     public float maxJumpTime;
     public float jumpForce;
     public Rigidbody2D body;
+    public float groundedMinVel;
 
     public ColliderCheck groundCheck;
 
@@ -15,7 +16,7 @@ public class PlayerJump : MonoBehaviour
     
     public void HandleJump(InputSystem_Actions  controls)
     {
-        isGrounded = groundCheck.IsOverlap() && Mathf.Abs(body.linearVelocityY) <= 1e-5;
+        isGrounded = groundCheck.IsOverlap() && Mathf.Abs(body.linearVelocityY) <= groundedMinVel;
         
         if (isGrounded && controls.Player.Jump.WasPressedThisFrame())
         {
