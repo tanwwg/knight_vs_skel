@@ -4,6 +4,8 @@ using UnityEngine;
 public class WeaponCollider : MonoBehaviour
 {
     public int damage;
+
+    public float knockback;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -11,7 +13,7 @@ public class WeaponCollider : MonoBehaviour
         var hit = other.gameObject.GetComponent<Hittable>();
         if (hit)
         {
-            hit.onHit.Invoke(damage);
+            hit.Hit(this, other);
         }
     }
 }

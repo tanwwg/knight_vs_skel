@@ -17,8 +17,13 @@ public class Player : MonoBehaviour
     
     private void OnEnable()
     {
-        _controls = new InputSystem_Actions();
+        _controls ??= new InputSystem_Actions();
         _controls.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _controls.Player.Disable();
     }
 
     private void FixedUpdate()

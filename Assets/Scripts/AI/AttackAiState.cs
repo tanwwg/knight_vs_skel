@@ -5,16 +5,17 @@ public class AttackAiState : AiStateBehaviour
     public AiStateBehaviour moveBehaviour;
 
     public ColliderCheck check;
-    
-    public AnimatorState anim;
+
+    public Cooldown attackCooldown;
     
     public override AiStateBehaviour HandleUpdate()
     {
-        if (anim.State == "attack") return this;
+        if (attackCooldown.isActivated) return this;
         
         if (check.IsOverlap())
         {
-            anim.SetState("attack");
+            Debug.Log("Attack!");
+            attackCooldown.Activate();
             return this;
         }
         else
