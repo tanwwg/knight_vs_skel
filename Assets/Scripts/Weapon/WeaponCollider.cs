@@ -10,10 +10,11 @@ public class WeaponCollider : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("WeaponCollider " + other.gameObject.name);
+        // Debug.Log("WeaponCollider " + other.gameObject.name);
         var hit = other.gameObject.GetComponent<Hittable>();
         if (hit && hit != owner)
         {
+            Debug.Log("WeaponCollider " + other.gameObject.name);
             hit.Hit(this, other);
         }
     }
