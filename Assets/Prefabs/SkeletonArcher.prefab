@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5856297356547804556
 Transform:
   m_ObjectHideFlags: 0
@@ -144,6 +144,10 @@ MonoBehaviour:
           m_StringArgument: damage
           m_BoolArgument: 0
         m_CallState: 2
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
+  health: 0
 --- !u!61 &1694567375300421615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -632,6 +636,7 @@ GameObject:
   - component: {fileID: 3930080228020534392}
   - component: {fileID: 153399797789589954}
   - component: {fileID: 4768147930781268358}
+  - component: {fileID: 9148643707361595455}
   m_Layer: 9
   m_Name: Arrow
   m_TagString: Untagged
@@ -782,3 +787,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &9148643707361595455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9176877834146060035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d19ba1d22bb488bad1b8f4efb35e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  knockback: 1

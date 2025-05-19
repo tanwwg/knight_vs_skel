@@ -28,7 +28,9 @@ public class MoveAiState : AiStateBehaviour
         }
         
         body.linearVelocityX = Mathf.Sign(target.position.x - body.position.x) * speedX;
-        myTransform.localScale = new Vector3(Mathf.Sign(body.linearVelocityX), 1, 1);
+        var ls = myTransform.localScale;
+        var scale = new Vector3(Mathf.Sign(body.linearVelocityX) * Mathf.Abs(ls.x), ls.y, ls.z);
+        myTransform.localScale = scale;
         
         anim.SetState("run");
         return this;

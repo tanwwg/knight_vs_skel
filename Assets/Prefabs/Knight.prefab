@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7790372180340919466}
   - component: {fileID: 2235416126744297818}
   - component: {fileID: 1468316028138464415}
+  - component: {fileID: 8396722800581578687}
   - component: {fileID: 6510190573158912277}
   - component: {fileID: 7333579548956052421}
   - component: {fileID: 3990971143354456988}
@@ -70,14 +71,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947befb38e37542d7b5536e59bed1f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxJumpTime: 0.3
-  jumpForce: 70
+  maxJumpTime: 0.2
+  jumpForce: 45
   body: {fileID: 7333579548956052421}
   groundedMinVel: 0.001
   groundCheck: {fileID: 6939127934008533567}
   jumpTime: 0
   isGrounded: 0
   isJumping: 0
+--- !u!114 &8396722800581578687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199745701002277423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6542e9e44c2184f018e5de53d175a567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6510190573158912277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd667aaa1643459a9e4ed486fb068c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   body: {fileID: 7333579548956052421}
   knockbackScale: {x: 1, y: 1}
   onHit:
@@ -131,6 +145,9 @@ MonoBehaviour:
           m_StringArgument: damage
           m_BoolArgument: 0
         m_CallState: 2
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &7333579548956052421
 Rigidbody2D:
   serializedVersion: 5
@@ -146,7 +163,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 1
   m_AngularDamping: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
