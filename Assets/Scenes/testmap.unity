@@ -1543,7 +1543,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   hitLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 320
   damage: 9999
   knockback: 0
 --- !u!1001 &983892896
@@ -6061,6 +6061,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2043427445649685763, guid: bcdb91acd815b47dbaa4109438a5e834, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 8.049988
+      objectReference: {fileID: 0}
     - target: {fileID: 3199745701002277423, guid: bcdb91acd815b47dbaa4109438a5e834, type: 3}
       propertyPath: m_Name
       value: Knight
