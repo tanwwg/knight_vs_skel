@@ -14,7 +14,6 @@ public class AttackAiState : AiStateBehaviour
         
         if (check.IsOverlap())
         {
-            Debug.Log("Attack!");
             attackCooldown.Activate();
             return this;
         }

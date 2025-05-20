@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,12 @@ public class Cooldown : MonoBehaviour
     
     [Header("Read Only")]
     public bool isActivated;
-    
+
+    public void OnDisable()
+    {
+        this.CancelInvoke();
+    }
+
     public void Activate()
     {
         if (isActivated)
