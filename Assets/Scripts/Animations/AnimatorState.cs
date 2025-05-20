@@ -4,6 +4,7 @@ public class AnimatorState : MonoBehaviour
 {
     public Animator animator;
 
+    [Header("Read-Only")]
     public string State;
 
     public bool isDebug;
@@ -18,10 +19,5 @@ public class AnimatorState : MonoBehaviour
             animator.Play(newState);
             this.State = newState;
         }
-    }
-
-    public void SetFlag(string flag)
-    {
-        animator.SetBool(flag, true);
     }
 }

@@ -28,8 +28,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // activate attack, then no more processing if attack is activated
-        // if we reverse the order of this check, player can get stuck attacking
         if (_controls.Player.Attack.IsPressed() && !attack.isActivated) attack.Activate();
         
         jump.HandleJump(_controls);
