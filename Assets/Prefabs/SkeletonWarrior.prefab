@@ -587,6 +587,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 6605889704283224382}
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 64
   damage: 1
   knockback: 5
 --- !u!61 &6076591961260291478
