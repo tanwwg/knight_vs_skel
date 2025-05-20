@@ -1,13 +1,21 @@
+using System;
 using UnityEngine;
 
 public class ShootProjectile : MonoBehaviour
 {
-    public Transform target;
     public GameObject prefab;
     public float force;
 
+    private Transform target;
+    
+    public void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     public void Shoot()
     {
+        
         var arrow = Instantiate(prefab, prefab.transform.position, Quaternion.identity);
         arrow.gameObject.SetActive(true);
         

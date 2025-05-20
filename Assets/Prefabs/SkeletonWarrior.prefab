@@ -29,10 +29,11 @@ Transform:
   m_GameObject: {fileID: 2653967451528516873}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 153796923093450192}
   m_Father: {fileID: 3042663606794383251}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7595926050069495878
@@ -217,7 +218,7 @@ Transform:
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 153796923093450192}
+  - {fileID: 6518136362362296869}
   - {fileID: 3422468627317752243}
   - {fileID: 4509302645996801204}
   - {fileID: 7243686302558009031}
@@ -237,21 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba9dbcdd10fd41c4a91f16d01054db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDie:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: die
-          m_BoolArgument: 0
-        m_CallState: 2
   aiState: {fileID: 1795875082118002371}
 --- !u!114 &6605889704283224382
 MonoBehaviour:
@@ -265,35 +251,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd667aaa1643459a9e4ed486fb068c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 1
   body: {fileID: 8934316857523058768}
-  knockbackScale: {x: 1, y: 1}
+  knockbackScale: {x: 1, y: 0.5}
+  onHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7595926050069495878}
-        m_TargetAssemblyTypeName: AnimatorState, Assembly-CSharp
-        m_MethodName: SetState
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: die
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1469418350043039364}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: die
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1756016849138701880}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
@@ -306,7 +272,10 @@ MonoBehaviour:
           m_StringArgument: damage
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6605889704283224382}
+  onDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1469418350043039364}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -315,21 +284,22 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: damage
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4601207078665829833}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: set_layer
-        m_Mode: 3
+      - m_Target: {fileID: 7595926050069495878}
+        m_TargetAssemblyTypeName: AnimatorState, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: damage
+          m_StringArgument: die
           m_BoolArgument: 0
         m_CallState: 2
+  health: 0
 --- !u!61 &8540206843350332690
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -364,7 +334,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.017065942, y: 0.98125213}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -374,7 +344,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.835086, y: 1.9648317}
+  m_Size: {x: 0.835086, y: 1.87}
   m_EdgeRadius: 0
 --- !u!50 &8934316857523058768
 Rigidbody2D:
@@ -450,6 +420,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextBehaviour: {fileID: 3901294574586872804}
+  onMove:
+    m_PersistentCalls:
+      m_Calls: []
   animState: {fileID: 7595926050069495878}
   vision: {fileID: 2152383213330033457}
 --- !u!114 &2152383213330033457
@@ -502,7 +475,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.61272264}
+  m_Offset: {x: 0, y: -1.35}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -512,7 +485,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 15, y: 2.225445}
+  m_Size: {x: 21, y: 2.225445}
   m_EdgeRadius: 0
 --- !u!1 &6377702075614301053
 GameObject:
@@ -559,9 +532,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myTransform: {fileID: 3042663606794383251}
-  target: {fileID: 0}
   body: {fileID: 8934316857523058768}
-  speedX: 3
+  speedX: 6
   idleBehaviour: {fileID: 1795875082118002371}
   idleCheck: {fileID: 2152383213330033457}
   attackBehaviour: {fileID: 672286577172166041}
@@ -595,12 +567,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6548236291585267037}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.93, y: 1.05, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.9299998, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3042663606794383251}
+  m_Father: {fileID: 6600190989912429605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4801731405401616497
 MonoBehaviour:
@@ -614,6 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d19ba1d22bb488bad1b8f4efb35e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 6605889704283224382}
   damage: 1
   knockback: 5
 --- !u!61 &6076591961260291478
@@ -754,7 +727,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1311601153571493848}
   - component: {fileID: 608798518877591449}
-  - component: {fileID: 1023874181636386797}
   m_Layer: 0
   m_Name: CheckAttack
   m_TagString: Untagged
@@ -789,17 +761,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e432dc2309ad495b81d47c892ecc41d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  check: {fileID: 1023874181636386797}
+  check: {fileID: 6737681839181490825}
   checkLayers:
     serializedVersion: 2
     m_Bits: 64
---- !u!61 &1023874181636386797
+--- !u!1 &7819299349225804095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6518136362362296869}
+  - component: {fileID: 6737681839181490825}
+  m_Layer: 9
+  m_Name: CheckBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6518136362362296869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819299349225804095}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.93, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3042663606794383251}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &6737681839181490825
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7585624906309524965}
+  m_GameObject: {fileID: 7819299349225804095}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -827,17 +831,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.3404014, y: 0.22693431}
+  m_Offset: {x: -0.25781584, y: -0.0028392076}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.2, y: 1.9}
+    newSize: {x: 1.8, y: 2.85}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.6808028, y: 1.9985106}
+  m_Size: {x: 1.7411613, y: 1.9493806}
   m_EdgeRadius: 0
 --- !u!1 &9148772227838132056
 GameObject:
@@ -899,6 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822521e588ae342449d3ba7eeacc189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
   onActivate:
     m_PersistentCalls:
       m_Calls:
@@ -929,5 +934,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  timer: 0
   isActivated: 0

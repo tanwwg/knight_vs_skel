@@ -1,10 +1,10 @@
+using System;
 using UnityEngine;
 
 public class MoveAiState : AiStateBehaviour
 {
     public Transform myTransform;
     
-    public Transform target;
     public Rigidbody2D body;
 
     public float speedX;
@@ -16,7 +16,14 @@ public class MoveAiState : AiStateBehaviour
     public ColliderCheck attackCheck;
     
     public AnimatorState anim;
-    
+
+    private Transform target;
+
+    private void Start()
+    {
+        this.target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     public override AiStateBehaviour HandleUpdate()
     {
         if (!idleCheck.IsOverlap()) return idleBehaviour;

@@ -3,13 +3,13 @@ using UnityEngine.Events;
 
 public class Cooldown : MonoBehaviour
 {
-    public UnityEvent onActivate;
-    public UnityEvent onDeactivate;
-
     /**
      * Set to non zero to have the cooldown automatically deactivate
-     */
+    */
     public float timer;
+
+    public UnityEvent onActivate;
+    public UnityEvent onDeactivate;
     
     [Header("Read Only")]
     public bool isActivated;

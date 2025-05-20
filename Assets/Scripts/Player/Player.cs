@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
         // activate attack, then no more processing if attack is activated
         // if we reverse the order of this check, player can get stuck attacking
         if (_controls.Player.Attack.IsPressed() && !attack.isActivated) attack.Activate();
-        if (attack.isActivated) return;
         
         jump.HandleJump(_controls);
 
@@ -41,7 +40,15 @@ public class Player : MonoBehaviour
         
         if (vel.x != 0) this.transform.localScale = new Vector3(Mathf.Sign(vel.x), 1, 1);
 
-        animState.SetState(Math.Abs(body.linearVelocityX) > 0 ? "run" : "idle");
+        if (attack.isActivated)
+        {
+            animState.SetState("attack");
+        }
+        else
+        {
+            animState.SetState(Math.Abs(body.linearVelocityX) > 0 ? "run" : "idle");
+        }
+
     }
 
 }
