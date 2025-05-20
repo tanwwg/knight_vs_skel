@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerJump : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PlayerJump : MonoBehaviour
     public float groundedMinVel;
 
     public ColliderCheck groundCheck;
+    
+    
+    public UnityEvent onJump;
 
     [Header("Read Only")]
     public float jumpTime;
@@ -23,6 +27,7 @@ public class PlayerJump : MonoBehaviour
             jumpTime = 0f;
             isJumping = true;
             body.AddForceY(jumpTime, ForceMode2D.Force); 
+            onJump.Invoke();
         }
         if (isJumping)
         {
