@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 8396722800581578687}
   - component: {fileID: 6510190573158912277}
   - component: {fileID: 7333579548956052421}
-  - component: {fileID: 3990971143354456988}
+  - component: {fileID: 7283335703102144074}
   m_Layer: 6
   m_Name: Knight
   m_TagString: Player
@@ -151,6 +151,9 @@ MonoBehaviour:
   body: {fileID: 7333579548956052421}
   groundedMinVel: 0.001
   groundCheck: {fileID: 6939127934008533567}
+  onJump:
+    m_PersistentCalls:
+      m_Calls: []
   jumpTime: 0
   isGrounded: 0
   isJumping: 0
@@ -303,7 +306,7 @@ Rigidbody2D:
   m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1ce303d42cace4a689c29f1ea69a827f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -314,8 +317,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &3990971143354456988
-BoxCollider2D:
+--- !u!70 &7283335703102144074
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -349,17 +352,8 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.4333333, y: 2.1333334}
-    newSize: {x: 4.4, y: 3.4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.0667413, y: 2.1}
-  m_EdgeRadius: 0.01
+  m_Size: {x: 0.74, y: 2.22}
+  m_Direction: 0
 --- !u!1 &3429904774510513125
 GameObject:
   m_ObjectHideFlags: 0
